@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<link rel="stylesheet/less" type="text/css" href="css/main.less" />
+	<script src="javascript/less.min.js"></script>
+	<script src="javascript/angular.min.js"></script>
+</head>
+
+<body ng-app='blog' ng-controller='BlogCtrl as blog'>
+	<header>
+		<h1><a href='index.html'>Fallflame Blog - 落火博客</a><h1>
+	</header>
+
+	<section>
+		<h2>文章列表</h2>
+		<ul>
+			<li ng-repeat='post in blog.posts'>
+				<h3>{{post.title}}</h3>
+				<p>{{post.content}}</p>
+			</li>
+		</ul>
+		<div>
+			<a>Previous</a>
+			{{blog.page}}
+			<a>Next</a>
+		</div>
+	</section>
+
+	<section>
+		<h2>新文章</h2>
+
+		<p>
+			<label>文章标题: </label>
+			<input type='text' ng-model='blog.newPost.title'/>
+		</p>
+
+		<p>
+			<label>文章内容: </label><br/>
+			<textarea rows="4" cols="50" ng-model='blog.newPost.content'></textarea>
+		</p>
+
+		<p><button ng-click='blog.saveNewPost()'>发布</button></p>
+	</section>
+
+
+	<footer>
+	</footer>
+
+	<script src='javascript/main.js'></script>
+</body>
+</html>
